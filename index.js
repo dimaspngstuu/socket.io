@@ -11,7 +11,9 @@ const io = new Server(expressServer,{
 });
 
 io.on("connection",function(socket){
-    console.log("new User added");
+    socket.on("message", function(msg){
+        io.emit("chat_send", msg)
+    })
 
 })
 
